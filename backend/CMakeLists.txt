@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.20)
+project(FoodHub LANGUAGES C CXX)
+set(CMAKE_CXX_STANDARD 17)
+find_package(Crow CONFIG REQUIRED)
+find_package(OpenSSL REQUIRED)
+add_executable(foodhub main.cpp third_party/sqlite/sqlite3.c)
+target_include_directories(foodhub PRIVATE third_party/sqlite)
+target_link_libraries(foodhub PRIVATE Crow::Crow OpenSSL::Crypto)
